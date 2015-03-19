@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>c
+#import <AddressBookUI/AddressBookUI.h>
 
 
 @interface ViewController ()
@@ -51,13 +51,13 @@ static NSString *phonetic(NSString *sourceString) {
         });
     });
     
-    // 初始化并创建通讯录对象，记得释放内存
+    // init and get addressbook
     CFErrorRef error = nil; // no asterisk
     ABAddressBookRef addressBook =
     ABAddressBookCreateWithOptions(NULL, &error); // indirection
-    // 获取通讯录中所有的联系人
+    // get contact people
     NSArray *arrayOfPeople = (__bridge NSArray *)(ABAddressBookCopyArrayOfAllPeople(addressBook));
-    // 遍历所有的联系人并修改指定的联系人
+    // list all people
     for (id obj in arrayOfPeople) {
         ABRecordRef person = (__bridge ABRecordRef)obj;
         NSMutableString *pinyin = [NSMutableString string];
